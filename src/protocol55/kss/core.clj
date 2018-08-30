@@ -299,7 +299,7 @@
 
               :markup
               (if (contains? ret :markup)
-                (update ret :markup str " " v)
+                (update ret :markup str "\n" v)
                 (assoc ret :markup v))
 
               ;; else

@@ -108,7 +108,16 @@
                (select-keys [:markup :header :modifiers])))
         {:header "Don't be the header"
          :markup "<h1 class=\"{{modifier_class}}\">Header</h1>"
-         :modifiers [{:name ".title" :description "The primary header of the document, should refelect `title` tags."}]})))
+         :modifiers [{:name ".title" :description "The primary header of the document, should refelect `title` tags."}]})
+
+    (is (= (-> (some-section "markup.multi-line" docs)
+               :markup
+               clojure.string/split-lines)
+           ["<section>"
+            "  <header>"
+            "    <h1 class=\"{{modifier_class}}\">Heading</h1>"
+            "  </header>"
+            "</section>"]))))
 
 (deftest test-parameters
   (let [docs (kss/parse-file (fixture-file "property-parameters.less"))]
@@ -116,7 +125,7 @@
                :parameters)
            [{:name "param1" :default-value nil                    :description "Parameter 1"}
             {:name "param2" :default-value "Default param2 value" :description "Parameter 2"}
-            {:name "param3" :default-value "Default param3 value" :description "Parameter 3"}])) 
+            {:name "param3" :default-value "Default param3 value" :description "Parameter 3"}]))
 
     (is (= (-> (some-section "parameter.mixinD" docs)
                :compatibility)
