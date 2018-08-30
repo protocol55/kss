@@ -4,7 +4,7 @@
   <groupId>org.clojars.protocol55</groupId>
   <artifactId>kss</artifactId>
   <version>0.1.1</version>
-  <name>deckgl</name>
+  <name>kss</name>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
